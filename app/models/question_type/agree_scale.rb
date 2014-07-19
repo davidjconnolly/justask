@@ -1,4 +1,4 @@
-class QuestionType::AgreeScale
+class QuestionType::AgreeScale < QuestionType
   # == Constants =============================================================
 
   # == Properties ============================================================

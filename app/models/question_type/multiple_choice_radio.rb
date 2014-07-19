@@ -1,4 +1,4 @@
-class QuestionType::MultipleChoiceRadio
+class QuestionType::MultipleChoiceRadio < QuestionType
   # == Constants =============================================================
 
   # == Properties ============================================================

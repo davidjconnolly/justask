@@ -1,4 +1,4 @@
-class QuestionType::MultipleChoiceText
+class QuestionType::MultipleChoiceText < QuestionType
   # == Constants =============================================================
 
   # == Properties ============================================================

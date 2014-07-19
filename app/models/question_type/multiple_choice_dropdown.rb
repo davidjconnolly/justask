@@ -1,4 +1,4 @@
-class QuestionType::MultipleChoiceDropdown
+class QuestionType::MultipleChoiceDropdown < QuestionType
   # == Constants =============================================================
 
   # == Properties ============================================================

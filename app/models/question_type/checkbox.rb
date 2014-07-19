@@ -1,4 +1,4 @@
-class QuestionType::Checkbox
+class QuestionType::Checkbox < QuestionType
   # == Constants =============================================================
 
   # == Properties ============================================================

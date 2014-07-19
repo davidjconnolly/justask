@@ -7,7 +7,13 @@ class Question < ActiveRecord::Base
 
   # == Relationships =========================================================
 
+  belongs_to :page
+  has_one :response,
+    dependent: :restrict_with_error
+
   # == Validations ===========================================================
+
+  validates :page, presence: true
 
   # == Callbacks =============================================================
 

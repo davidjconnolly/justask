@@ -1,6 +1,14 @@
 class QuestionType
   # == Constants =============================================================
 
+  TYPES = %w[
+    QuestionType::AgreeScale
+    QuestionType::Checkbox
+    QuestionType::MultipleChoiceDropdown
+    QuestionType::MultipleChoiceRadio
+    QuestionType::Text
+  ]
+
   # == Properties ============================================================
 
   # == Extensions ============================================================

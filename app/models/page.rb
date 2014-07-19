@@ -7,7 +7,13 @@ class Page < ActiveRecord::Base
 
   # == Relationships =========================================================
 
+  belongs_to :survey
+  has_many :questions,
+    dependent: :restrict_with_error
+
   # == Validations ===========================================================
+
+  validates :survey, presence: true
 
   # == Callbacks =============================================================
 

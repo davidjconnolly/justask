@@ -7,7 +7,12 @@ class Survey < ActiveRecord::Base
 
   # == Relationships =========================================================
 
+  has_many :pages,
+    dependent: :restrict_with_error
+
   # == Validations ===========================================================
+
+    validates :title, presence: true
 
   # == Callbacks =============================================================
 
