@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # Core
 gem 'rails', '4.1.4'
-gem 'pg', '~> 0.17.1'
+gem 'pg', '~> 0.15.0'
 gem 'rails-i18n', '~> 4.0.2'
 
 # HTML/CSS
