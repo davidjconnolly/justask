@@ -1,3 +1,6 @@
+:javascript
+  $(function(){admin_surveys.init()});
+
 = render :partial => 'admin/header'
 
 .container
@@ -8,9 +11,10 @@
       - @surveys.each do |survey|
         %li.list-group-item
           =simple_form_for(survey) do |form|
-            =form.input :title
-            =form.input :description
-            =form.button :submit
+            =form.input :title, disabled: params[:survey_id].to_s != survey.id.to_s
+            =form.input :description, disabled: params[:survey_id].to_s != survey.id.to_s
+            - if params[:survey_id].to_s == survey.id.to_s
+              =form.button :submit
           =link_to admin_surveys_path(survey_id: survey.id, page: params[:page]) do
             %button.btn Select
 
@@ -23,10 +27,11 @@
       - survey.pages.each do |page|
         %li.list-group-item
           =simple_form_for(page) do |form|
-            =form.input :title
-            =form.input :description
-            =form.input :text
-            =form.button :submit
+            =form.input :title, disabled: params[:page_id].to_s != page.id.to_s
+            =form.input :description, disabled: params[:page_id].to_s != page.id.to_s
+            =form.input :text, disabled: params[:page_id].to_s != page.id.to_s
+            - if params[:page_id].to_s == page.id.to_s
+              =form.button :submit
           =link_to admin_surveys_path(survey_id: params[:survey_id], page_id: page.id, page: params[:page]) do
             %button.btn Select
 
@@ -39,8 +44,8 @@
       - page.questions.each do |question|
         %li.list-group-item
           =simple_form_for(question) do |form|
-            =form.input :text
-            =form.button :submit
-
-
-
+            =form.input :text, disabled: params[:question_id].to_s != question.id.to_s
+            - if params[:question_id].to_s == question.id.to_s
+              =form.button :submit
+          =link_to admin_surveys_path(survey_id: params[:survey_id], page_id: params[:page_id], question_id: question.id, page: params[:page]) do
+            %button.btn Select
