@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  host: localhost
+  username: justask
+  password: password
+
+development:
+  <<: *default
+  database: justask_dev
+
+test:
+  <<: *default
+  database: justask_test
+
+production:
+  <<: *default
+  database: justask_prod

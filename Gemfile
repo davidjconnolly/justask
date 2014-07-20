@@ -26,6 +26,9 @@ gem 'test_dummy', '~> 0.5.0'
 
 group :development do
   gem 'capistrano', '~> 3.2.1'
+  gem 'capistrano-rvm', '~> 0.1.1'
+  gem 'capistrano-rails', '~> 1.1.1'
+  gem 'capistrano-bundler', '~> 1.1.2'
 end
 
 group :production do
