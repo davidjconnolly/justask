@@ -9,6 +9,7 @@ gem 'rails-i18n', '~> 4.0.2'
 gem 'sass-rails', '~> 4.0.3'
 gem 'haml-rails', '~> 0.5.3'
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'will_paginate-bootstrap', '~> 1.0.1'
 
 # Javascript
 gem 'coffee-rails', '~> 4.0.1'

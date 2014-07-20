@@ -1,7 +1,7 @@
 class CreateQuestions < ActiveRecord::Migration
   def change
     create_table :questions do |t|
-      t.string :type
+      t.string :question_type
       t.belongs_to :page
       t.integer :ordinal
       t.text :text

@@ -2,7 +2,7 @@ class Question
 
   dummy :page
 
-  dummy :type do
+  dummy :question_type do
     QuestionType::TYPES[rand(QuestionType::TYPES.count)]
   end
 

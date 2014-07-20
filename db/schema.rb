@@ -27,19 +27,19 @@ ActiveRecord::Schema.define(version: 20140719203336) do
   end
 
   create_table "questions", force: true do |t|
-    t.string   "type"
+    t.string   "question_type"
     t.integer  "page_id"
     t.integer  "ordinal"
     t.text     "text"
-    t.json     "fields",     default: {}
+    t.json     "fields",        default: {}
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "responses", force: true do |t|
-    t.string   "type"
+    t.string   "question_type"
     t.integer  "question_id"
-    t.json     "fields",      default: {}
+    t.json     "fields",        default: {}
     t.datetime "created_at"
     t.datetime "updated_at"
   end
