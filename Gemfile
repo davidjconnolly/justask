@@ -10,6 +10,7 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'haml-rails', '~> 0.5.3'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'will_paginate-bootstrap', '~> 1.0.1'
+gem 'simple_form', '~> 3.0.2'
 
 # Javascript
 gem 'coffee-rails', '~> 4.0.1'
