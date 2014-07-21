@@ -12,6 +12,10 @@ test:
   <<: *default
   database: justask_test
 
+staging:
+  <<: *defaults
+  database: justmet_staging
+
 production:
   <<: *default
   database: justask_prod
