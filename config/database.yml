@@ -13,7 +13,7 @@ test:
   database: justask_test
 
 staging:
-  <<: *defaults
+  <<: *default
   database: justmet_staging
 
 production:
