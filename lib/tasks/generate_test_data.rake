@@ -1,7 +1,7 @@
 namespace :justask do
   desc 'Generates test surveys (50 by default, override with count=#)'
   task generate_test_data: :environment do
-    count = ENV['count'].to_i || 50
+    count = ENV['count'].to_i > 0 ? ENV['count'].to_i : 50
 
     count.times.each_with_index do |index|
       survey = Survey.create_dummy!
