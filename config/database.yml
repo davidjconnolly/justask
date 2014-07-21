@@ -14,7 +14,7 @@ test:
 
 staging:
   <<: *default
-  database: justmet_staging
+  database: justask_staging
 
 production:
   <<: *default
