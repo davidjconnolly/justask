@@ -16,3 +16,4 @@ In just about every software problem I've encountered, I always see room for imp
 
 ## Configuration Steps:
 1. Create config/database.yml
+2. Configure /config/deploy/ enviroments
