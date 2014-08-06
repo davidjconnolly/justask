@@ -1,6 +1,6 @@
 # Justask
 
-[Staging Environment](http://www.davidjconnolly.com/)
+[Staging Environment](http://www.justask.davidjconnolly.com/)
 
 In just about every software problem I've encountered, I always see room for improvement in quickly gathering feedback on or answering a set of questions about a new product feature.  I thought it would be fun to make a basic survey tool to help solve this problem as well as provide a test bed for several technologies I've been wanting to explore.
 
