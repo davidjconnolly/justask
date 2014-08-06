@@ -15,7 +15,7 @@ class PagesControllerTest < ActionController::TestCase
         title: new_title
       }
 
-    assert_response :success
+    assert_response :redirect
     page.reload
     assert_equal new_title, page.title
   end

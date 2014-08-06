@@ -5,6 +5,9 @@ class SurveysController < ApplicationController
   def update
     @survey.update_attributes!(survey_params)
     redirect_to :back
+
+  rescue ActionController::RedirectBackError
+    redirect_to admin_surveys_path
   end
 
 protected
