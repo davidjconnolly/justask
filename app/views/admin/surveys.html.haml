@@ -7,9 +7,10 @@
   .container.col-md-12
     = will_paginate @surveys, renderer: BootstrapPagination::Rails
   .container.col-md-3
+    %h1 Surveys
     %ul.list-group
       - @surveys.each do |survey|
-        %li.list-group-item
+        %li.list-group-item{ :class => ('active' if params[:survey_id].to_s == survey.id.to_s) }
           =simple_form_for(survey) do |form|
             =form.input :title, disabled: params[:survey_id].to_s != survey.id.to_s
             =form.input :description, disabled: params[:survey_id].to_s != survey.id.to_s
@@ -21,11 +22,12 @@
   .container.col-md-3
     -survey = Survey.find_by_id(params[:survey_id])
     -if survey
-      %h1
+      %h1 Pages
+      %h2
         =survey.title
       %ul.list-group
       - survey.pages.each do |page|
-        %li.list-group-item
+        %li.list-group-item{ :class => ('active' if params[:page_id].to_s == page.id.to_s) }
           =simple_form_for(page) do |form|
             =form.input :title, disabled: params[:page_id].to_s != page.id.to_s
             =form.input :description, disabled: params[:page_id].to_s != page.id.to_s
@@ -38,11 +40,12 @@
   .container.col-md-3
     -page = Page.find_by_id(params[:page_id])
     -if page
-      %h1
+      %h1 Questions
+      %h2
         =page.title
       %ul.list-group
       - page.questions.each do |question|
-        %li.list-group-item
+        %li.list-group-item{ :class => ('active' if params[:question_id].to_s == question.id.to_s) }
           =simple_form_for(question) do |form|
             =form.input :text, disabled: params[:question_id].to_s != question.id.to_s
             - if params[:question_id].to_s == question.id.to_s

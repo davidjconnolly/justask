@@ -1,0 +1,19 @@
+/*
+ *= require overrides
+*/
+
+/* Bootstrap */
+li.list-group-item form {
+  input, textarea {
+    color: black;
+    margin-bottom: 5px;
+  }
+
+  label{
+    margin-bottom: 0px;
+  }
+
+  .btn {
+    margin-bottom: 5px;
+  }
+}
