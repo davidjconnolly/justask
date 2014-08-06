@@ -15,7 +15,7 @@ class SurveysControllerTest < ActionController::TestCase
         title: new_title
       }
 
-    assert_response :success
+    assert_response :redirect
     survey.reload
     assert_equal new_title, survey.title
   end
