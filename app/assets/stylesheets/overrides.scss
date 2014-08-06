@@ -4,7 +4,7 @@
 
 /* Bootstrap */
 li.list-group-item form {
-  input, textarea {
+  input[type='text'], textarea {
     color: black;
     margin-bottom: 5px;
     width: 100%;
@@ -14,7 +14,7 @@ li.list-group-item form {
     margin-bottom: 0px;
   }
 
-  .btn {
+  input.btn{
     margin-bottom: 5px;
   }
 }
