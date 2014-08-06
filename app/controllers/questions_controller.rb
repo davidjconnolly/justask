@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
 
   def update
     @question.update_attributes!(question_params)
-    render json: {success: true}
+    redirect_to :back
   end
 
 protected

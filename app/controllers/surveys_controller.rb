@@ -4,7 +4,7 @@ class SurveysController < ApplicationController
 
   def update
     @survey.update_attributes!(survey_params)
-    render json: {success: true}
+    redirect_to :back
   end
 
 protected

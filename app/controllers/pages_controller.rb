@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
   def update
     @page.update_attributes!(page_params)
-    render json: {success: true}
+    redirect_to :back
   end
 
 protected
