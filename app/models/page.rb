@@ -1,4 +1,7 @@
 class Page < ActiveRecord::Base
+
+  ORDINAL_INCREMENT = 10
+
   # == Constants =============================================================
 
   # == Properties ============================================================
@@ -17,10 +20,17 @@ class Page < ActiveRecord::Base
 
   # == Callbacks =============================================================
 
+  before_create :set_ordinal
+
   # == Scopes ================================================================
 
   # == Class Methods =========================================================
 
   # == Instance Methods ======================================================
+
+  def set_ordinal
+    last_ordinal = survey.pages.order(:ordinal).last.try(:ordinal)
+    self.ordinal = last_ordinal ? last_ordinal + ORDINAL_INCREMENT : 0
+  end
 
 end

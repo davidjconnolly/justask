@@ -6,45 +6,53 @@
 .container
   .container.col-md-12
     = will_paginate @surveys, renderer: BootstrapPagination::Rails
-  .container.col-md-3
+  .container.col-md-4
+    %h1 Surveys
     %ul.list-group
       - @surveys.each do |survey|
-        %li.list-group-item
+        %li.list-group-item{ :class => ('active' if params[:survey_id].to_s == survey.id.to_s) }
           =simple_form_for(survey) do |form|
-            =form.input :title, disabled: params[:survey_id].to_s != survey.id.to_s
-            =form.input :description, disabled: params[:survey_id].to_s != survey.id.to_s
+            -disabled = params[:survey_id].to_s != survey.id.to_s
+            =form.input :title, disabled: disabled
+            =form.input :description, disabled: disabled, input_html: {:rows => 5}
             - if params[:survey_id].to_s == survey.id.to_s
               =form.button :submit
           =link_to admin_surveys_path(survey_id: survey.id, page: params[:page]) do
             %button.btn Select
 
-  .container.col-md-3
+  .container.col-md-4
     -survey = Survey.find_by_id(params[:survey_id])
     -if survey
-      %h1
+      %h1 Pages
+      %h2
         =survey.title
       %ul.list-group
-      - survey.pages.each do |page|
-        %li.list-group-item
+      - survey.pages.order(:ordinal).each do |page|
+        %li.list-group-item{ :class => ('active' if params[:page_id].to_s == page.id.to_s) }
           =simple_form_for(page) do |form|
-            =form.input :title, disabled: params[:page_id].to_s != page.id.to_s
-            =form.input :description, disabled: params[:page_id].to_s != page.id.to_s
-            =form.input :text, disabled: params[:page_id].to_s != page.id.to_s
+            -disabled = params[:page_id].to_s != page.id.to_s
+            =form.input :ordinal, disabled: disabled
+            =form.input :title, disabled: disabled
+            =form.input :description, disabled: disabled, input_html: {:rows => 5}
+            =form.input :text, disabled: disabled, input_html: {:rows => 5}
             - if params[:page_id].to_s == page.id.to_s
               =form.button :submit
           =link_to admin_surveys_path(survey_id: params[:survey_id], page_id: page.id, page: params[:page]) do
             %button.btn Select
 
-  .container.col-md-3
+  .container.col-md-4
     -page = Page.find_by_id(params[:page_id])
     -if page
-      %h1
+      %h1 Questions
+      %h2
         =page.title
       %ul.list-group
-      - page.questions.each do |question|
-        %li.list-group-item
+      - page.questions.order(:ordinal).each do |question|
+        %li.list-group-item{ :class => ('active' if params[:question_id].to_s == question.id.to_s) }
           =simple_form_for(question) do |form|
-            =form.input :text, disabled: params[:question_id].to_s != question.id.to_s
+            -disabled = params[:question_id].to_s != question.id.to_s
+            =form.input :ordinal, disabled: disabled
+            =form.input :text, disabled: params[:question_id].to_s != question.id.to_s, input_html: {:rows => 5}
             - if params[:question_id].to_s == question.id.to_s
               =form.button :submit
           =link_to admin_surveys_path(survey_id: params[:survey_id], page_id: params[:page_id], question_id: question.id, page: params[:page]) do

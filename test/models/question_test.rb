@@ -36,4 +36,16 @@ class QuestionTest < ActiveSupport::TestCase
     end
   end
 
+  def test_set_ordinals
+    page = a Page
+
+    question1 = Question.create_dummy!(page: page)
+    question2 = Question.create_dummy!(page: page)
+    question3 = Question.create_dummy!(page: page)
+
+    assert_equal 0, question1.ordinal
+    assert_equal Question::ORDINAL_INCREMENT, question2.ordinal
+    assert_equal Question::ORDINAL_INCREMENT * 2, question3.ordinal
+  end
+
 end
