@@ -15,7 +15,7 @@ class QuestionsControllerTest < ActionController::TestCase
         text: new_text
       }
 
-    assert_response :success
+    assert_response :redirect
     question.reload
     assert_equal new_text, question.text
   end
