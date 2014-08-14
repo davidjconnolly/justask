@@ -20,7 +20,7 @@ class Page < ActiveRecord::Base
 
   # == Callbacks =============================================================
 
-  before_create :set_ordinal
+  after_save :recalculate_ordinals
 
   # == Scopes ================================================================
 
@@ -28,9 +28,12 @@ class Page < ActiveRecord::Base
 
   # == Instance Methods ======================================================
 
-  def set_ordinal
-    last_ordinal = survey.pages.order(:ordinal).last.try(:ordinal)
-    self.ordinal = last_ordinal ? last_ordinal + ORDINAL_INCREMENT : 0
+  def recalculate_ordinals
+    return unless self.ordinal_changed? || self.id_changed?
+
+    self.survey.pages.order(:ordinal).each_with_index do |page, index|
+      page.update_column(:ordinal, (index+1)*ORDINAL_INCREMENT)
+    end
   end
 
 end

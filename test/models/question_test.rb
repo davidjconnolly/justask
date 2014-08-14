@@ -43,9 +43,13 @@ class QuestionTest < ActiveSupport::TestCase
     question2 = Question.create_dummy!(page: page)
     question3 = Question.create_dummy!(page: page)
 
-    assert_equal 0, question1.ordinal
-    assert_equal Question::ORDINAL_INCREMENT, question2.ordinal
-    assert_equal Question::ORDINAL_INCREMENT * 2, question3.ordinal
+    question1.reload
+    question2.reload
+    question3.reload
+
+    assert_equal Question::ORDINAL_INCREMENT, question1.ordinal
+    assert_equal Question::ORDINAL_INCREMENT * 2, question2.ordinal
+    assert_equal Question::ORDINAL_INCREMENT * 3, question3.ordinal
   end
 
 end
