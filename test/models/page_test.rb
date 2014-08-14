@@ -36,7 +36,7 @@ class PageTest < ActiveSupport::TestCase
     end
   end
 
-  def test_set_ordinals_defaults
+  def test_set_default_ordinals
     survey = a Survey
 
     page1 = Page.create_dummy!(survey: survey)
@@ -52,7 +52,7 @@ class PageTest < ActiveSupport::TestCase
     assert_equal Page::ORDINAL_INCREMENT * 3, page3.ordinal
   end
 
-  def test_set_ordinals_custom
+  def test_set_custom_ordinals
     survey = a Survey
 
     page1 = Page.create_dummy!(survey: survey, ordinal: Page::ORDINAL_INCREMENT)
