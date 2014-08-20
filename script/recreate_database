@@ -1,0 +1,44 @@
+#!/bin/sh
+
+echo "ALL DATA WILL BE LOST IN ALL DATABASES"
+echo "Are you sure you want to continue?"
+
+read answer
+if  [ "$answer" != "yes" ] &&
+    [ "$answer" != "y" ] &&
+    [ "$answer" != "Y" ] &&
+    [ "$answer" != "YES" ];
+  then
+    exit 1
+fi
+
+echo ""
+echo "***** Recreating Database *****"
+
+if [ "$1" != "-no-pow" ]; then
+  echo "Stopping Powder"
+  powder down
+fi
+
+start=`date +%s`
+
+echo "Dropping Database"
+rake db:drop
+
+echo "Creating Database"
+rake db:create
+
+echo "Migrating Database"
+rake db:migrate VERBOSE=false
+
+if [ "$1" != "-no-pow" ]; then
+  echo "Starting Powder"
+  powder up
+fi
+
+echo "Seeding Database"
+rake db:seed
+
+end=`date +%s`
+
+echo "***** Done! $((end-start)) seconds *****"

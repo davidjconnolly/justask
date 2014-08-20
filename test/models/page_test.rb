@@ -36,4 +36,55 @@ class PageTest < ActiveSupport::TestCase
     end
   end
 
+  def test_set_default_ordinals
+    survey = a Survey
+
+    page1 = Page.create_dummy!(survey: survey)
+    page2 = Page.create_dummy!(survey: survey)
+    page3 = Page.create_dummy!(survey: survey)
+
+    page1.reload
+    page2.reload
+    page3.reload
+
+    assert_equal Page::ORDINAL_INCREMENT, page1.ordinal
+    assert_equal Page::ORDINAL_INCREMENT * 2, page2.ordinal
+    assert_equal Page::ORDINAL_INCREMENT * 3, page3.ordinal
+  end
+
+  def test_set_custom_ordinals
+    survey = a Survey
+
+    page1 = Page.create_dummy!(survey: survey, ordinal: Page::ORDINAL_INCREMENT)
+    page2 = Page.create_dummy!(survey: survey, ordinal: Page::ORDINAL_INCREMENT * 100)
+    page3 = Page.create_dummy!(survey: survey, ordinal: Page::ORDINAL_INCREMENT + (Page::ORDINAL_INCREMENT/2).to_i)
+
+    page1.reload
+    page2.reload
+    page3.reload
+
+    assert_equal Page::ORDINAL_INCREMENT, page1.ordinal
+    assert_equal Page::ORDINAL_INCREMENT * 2, page3.ordinal
+    assert_equal Page::ORDINAL_INCREMENT * 3, page2.ordinal
+  end
+
+  def test_update_ordinals
+    survey = a Survey
+
+    page1 = Page.create_dummy!(survey: survey)
+    page2 = Page.create_dummy!(survey: survey)
+    page3 = Page.create_dummy!(survey: survey)
+
+    page1.update_attribute(:ordinal, Page::ORDINAL_INCREMENT * 5)
+    page2.update_attribute(:ordinal, Page::ORDINAL_INCREMENT * 5)
+
+    page1.reload
+    page2.reload
+    page3.reload
+
+    assert_equal Page::ORDINAL_INCREMENT, page3.ordinal
+    assert_equal Page::ORDINAL_INCREMENT * 2, page1.ordinal
+    assert_equal Page::ORDINAL_INCREMENT * 3, page2.ordinal
+  end
+
 end
