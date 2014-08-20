@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   get 'admin',
     to: 'admin#index'
 
+  get 'client',
+    to: 'client#index'
+
 end

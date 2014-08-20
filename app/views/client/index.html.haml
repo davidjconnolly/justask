@@ -1,0 +1,16 @@
+%body
+  #selectSurvey{"data-role" => "page"}
+    %div{"data-role" => "header"}
+      %h1
+        -if Rails.env == "production"
+          Just Ask
+        -else
+          Just Ask (#{Rails.env.titleize})
+
+    %div{"data-role" => "content"}
+      %select#survey{name: "survey"}
+        %option{value: "blank"}
+          Select a survey...
+        - Survey.all.order('title').each do |survey|
+          %option{value: survey.id}
+            #{survey.title}

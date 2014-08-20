@@ -1,14 +1,14 @@
 require_relative '../test_helper'
 
-class AdminControllerTest < ActionController::TestCase
+class ClientControllerTest < ActionController::TestCase
 
-  test "should get surveys" do
+  test "should get index" do
     surveys = []
     5.times do
       surveys << (a Survey)
     end
 
-    get :surveys
+    get :index
 
     assert_response :success
   end
