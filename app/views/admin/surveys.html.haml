@@ -3,7 +3,7 @@
 
 = render :partial => 'admin/header'
 
-.container
+.container.admin_surveys
   .container.col-md-12
     = will_paginate @surveys, renderer: BootstrapPagination::Rails
   .container.col-md-4
@@ -44,8 +44,7 @@
     -page = Page.find_by_id(params[:page_id])
     -if page
       %h1 Questions
-      %h2
-        =page.title
+      %h2=page.title
       %ul.list-group
       - page.questions.order(:ordinal).each do |question|
         %li.list-group-item{ :class => ('active' if params[:question_id].to_s == question.id.to_s) }
